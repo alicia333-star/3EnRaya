@@ -2,7 +2,7 @@ package pkg3enraya;
 
 /**
  * Clase que representa una Inteligencia Artificial de nivel 2 (IA2).
- * Esta versión antes de mover por estrategia de pesos, comprueba si puede ganar la partida 
+ * Esta versión, antes de mover por estrategia de pesos, comprueba si puede ganar la partida 
  * en el turno actual revisando filas, columnas y diagonales.
  * * @author Alicia
  * @version 1.0 (Sprint 1)
@@ -124,4 +124,36 @@ public class IA2 extends IA1 {
             }
             if (this.taulell.getCasilla(f, 1) == fitxa 
                     && this.taulell.getCasilla(f, 2) == fitxa 
-                    && this.taulell.get
+                    && this.taulell.getCasilla(f, 0) == -1) {
+                moviment = new Moviment(this, f, 0);
+                return moviment;
+            }
+        }
+
+        return moviment;
+    }
+
+    /**
+     * Coordina la búsqueda de un movimiento ganador.
+     * @param fitxa Ficha a evaluar.
+     * @return Movimiento ganador o null.
+     */
+    public Moviment getMovimentGuanyador(int fitxa) {        
+        if (this.getFilaGuanyadora(fitxa) != null) {
+            return this.getFilaGuanyadora(fitxa);
+        }
+        if (this.getColumnaGuanyadora(fitxa) != null) {
+            return this.getColumnaGuanyadora(fitxa);
+        }
+        return this.getDiagonalGuanyadora(fitxa);
+    }
+
+    @Override
+    public Moviment moviment() {
+        Moviment moviment = this.getMovimentGuanyador(super.getTorn());
+        if (moviment == null) {
+            moviment = this.calcularMillorMoviment();
+        }
+        return moviment;
+    }
+}
