@@ -1,7 +1,15 @@
 package pkg3enraya;
-
+/**
+ * Clase principal que inicia el juego del 3 en Raya.
+ * Gestiona las instrucciones y el inicio de sesión.
+ * * @author Alicia
+ * @version 1.0 (Sprint 1)
+ */
 public class TresEnRaya {
-    
+    /**
+     * Muestra por consola la bienvenida y las reglas del juego.
+     * Muy importante para que el jugador conozca las penalizaciones antes de jugar.
+     */
     public static void mostrarInstrucciones() {
         System.out.println("*********************************************************************************");
         System.out.println("*                                  3 EN RAYA                                    *");
@@ -16,7 +24,11 @@ public class TresEnRaya {
         System.out.println("*                                                                               *");
         System.out.println("*********************************************************************************");
     }
-
+    /**
+     * Método principal del programa.
+     * Aparecen las instrucciones e instancia la sesión del juego.
+     * * @param args Argumentos de la línea de comandos.
+     */
     public static void main(String[] args) {
         TresEnRaya.mostrarInstrucciones();
         Sessio sesion = new Sessio();
